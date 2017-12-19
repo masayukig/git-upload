@@ -1,0 +1,32 @@
+#!/bin/bash
+
+ORIGIN_URL=$(git config --get remote.origin.url)
+NARGS=$#
+
+case "$ORIGIN_URL" in
+    https://review.openstack.org/*)
+        # Gerrit
+        git review $@;;
+    *)
+        # GitHub or the other repositories
+        if [ $NARGS -eq 0 ]; then
+            # Assume that pushing the current branch to a origin repo
+            REMOTE_REPO="origin"
+            CURRENT_BRANCH=$(git branch | grep -e "^\*" | cut -d' ' -f 2)
+            #echo $CURRENT_BRANCH
+            read -p "Do you really want to push '${CURRENT_BRANCH}' to '$REMOTE_REPO'? [Y/n]" ANSWER
+            case $ANSWER in
+                '' | [Yy]* )
+                    # Push the branch
+                    git push $REMOTE_REPO $CURRENT_BRANCH
+                    ;;
+                * )
+                    # Do nothing
+                    ;;
+            esac
+        else
+            echo git push $@
+        fi
+        ;;
+esac
+
