@@ -1,4 +1,24 @@
 git-upload
 ----------
 
-I don't want to care about the type of repositories when pushing a patch.
+I don't want to care about the type of repositories when pushing a
+patch.
+
+
+Description
+===========
+
+When you use this `git upload` command in a repo managed by Gerrit
+(supported only OpenStack repos, currently), this command runs `git
+review`. And when you use this command in a repo managed by the
+others, this command runs `git push origin $CURRENT_BRANCH` (you can
+specify the remote repo and branch, of course :).
+
+
+Usage
+=====
+
+::
+   $ git upload [<remote-repo>] [<branch>]
+   or you can use varioush options for `git push` or `git review`.
+
