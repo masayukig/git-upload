@@ -25,7 +25,7 @@ case "$ORIGIN_URL" in
                     ;;
             esac
         else
-            echo git push $@
+            git push $@
         fi
         ;;
 esac
