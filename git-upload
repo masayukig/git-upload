@@ -1,36 +1,15 @@
 #!/usr/bin/env python
-
-# #!/bin/bash
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License. You may obtain
+# a copy of the License at
 #
-# ORIGIN_URL=$(git config --get remote.origin.url)
-# NARGS=$#
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
-# case "$ORIGIN_URL" in
-#     https://review.openstack.org/*)
-#         # Gerrit
-#         git review $@;;
-#     *)
-#         # GitHub or the other repositories
-#         if [ $NARGS -eq 0 ]; then
-#             # Assume that pushing the current branch to a origin repo
-#             REMOTE_REPO="origin"
-#             CURRENT_BRANCH=$(git branch | grep -e "^\*" | cut -d' ' -f 2)
-#             #echo $CURRENT_BRANCH
-#             read -p "Do you really want to push '${CURRENT_BRANCH}' to '$REMOTE_REPO'? [Y/n]" ANSWER
-#             case $ANSWER in
-#                 '' | [Yy]* )
-#                     # Push the branch
-#                     git push $REMOTE_REPO $CURRENT_BRANCH
-#                     ;;
-#                 * )
-#                     # Do nothing
-#                     ;;
-#             esac
-#         else
-#             git push $@
-#         fi
-#         ;;
-# esac
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
 
 import subprocess
 import sys
