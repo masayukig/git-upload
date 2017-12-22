@@ -31,7 +31,8 @@ def main(argv=sys.argv):
         if len(argv) == 1:
             # Assume that pushing the current branch to a origin repo
             git_rev_parse = ['git', 'rev-parse', '--abbrev-ref', 'HEAD']
-            current_branch = subprocess.check_output(git_rev_parse).strip()
+            current_branch = subprocess.check_output(git_rev_parse)
+            current_branch = current_branch.decode('utf-8').strip()
             query = "Do you really want to push '%s' to 'origin'? [Y/n] " \
                     % current_branch
             answer = input(query).lower()
