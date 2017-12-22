@@ -1,32 +1,74 @@
-#!/bin/bash
+#!/usr/bin/env python
 
-ORIGIN_URL=$(git config --get remote.origin.url)
-NARGS=$#
+# #!/bin/bash
+#
+# ORIGIN_URL=$(git config --get remote.origin.url)
+# NARGS=$#
+#
+# case "$ORIGIN_URL" in
+#     https://review.openstack.org/*)
+#         # Gerrit
+#         git review $@;;
+#     *)
+#         # GitHub or the other repositories
+#         if [ $NARGS -eq 0 ]; then
+#             # Assume that pushing the current branch to a origin repo
+#             REMOTE_REPO="origin"
+#             CURRENT_BRANCH=$(git branch | grep -e "^\*" | cut -d' ' -f 2)
+#             #echo $CURRENT_BRANCH
+#             read -p "Do you really want to push '${CURRENT_BRANCH}' to '$REMOTE_REPO'? [Y/n]" ANSWER
+#             case $ANSWER in
+#                 '' | [Yy]* )
+#                     # Push the branch
+#                     git push $REMOTE_REPO $CURRENT_BRANCH
+#                     ;;
+#                 * )
+#                     # Do nothing
+#                     ;;
+#             esac
+#         else
+#             git push $@
+#         fi
+#         ;;
+# esac
 
-case "$ORIGIN_URL" in
-    https://review.openstack.org/*)
+import subprocess
+import sys
+from builtins import input
+
+args = sys.argv
+
+
+def main(argv=sys.argv):
+    origin_url = subprocess.check_output(['git', 'config', '--get',
+                                          'remote.origin.url'])
+    if origin_url.decode('utf-8').startswith('https://review.openstack.org/'):
         # Gerrit
-        git review $@;;
-    *)
+        git_review = ['git', 'review']
+        git_review.extend(argv[1:])
+        output = subprocess.check_output(git_review)
+        print(output)
+    else:
         # GitHub or the other repositories
-        if [ $NARGS -eq 0 ]; then
+        if len(argv) == 1:
             # Assume that pushing the current branch to a origin repo
-            REMOTE_REPO="origin"
-            CURRENT_BRANCH=$(git branch | grep -e "^\*" | cut -d' ' -f 2)
-            #echo $CURRENT_BRANCH
-            read -p "Do you really want to push '${CURRENT_BRANCH}' to '$REMOTE_REPO'? [Y/n]" ANSWER
-            case $ANSWER in
-                '' | [Yy]* )
-                    # Push the branch
-                    git push $REMOTE_REPO $CURRENT_BRANCH
-                    ;;
-                * )
-                    # Do nothing
-                    ;;
-            esac
-        else
-            git push $@
-        fi
-        ;;
-esac
+            git_rev_parse = ['git', 'rev-parse', '--abbrev-ref', 'HEAD']
+            current_branch = subprocess.check_output(git_rev_parse).strip()
+            query = "Do you really want to push '%s' to 'origin'? [Y/n]" \
+                    % current_branch
+            answer = input(query).lower()
+            if answer.startswith('y') or answer.strip() == '':
+                # Push the branch
+                output = subprocess.check_output(['git', 'push',
+                                                  'origin', current_branch])
+                print(output)
+            else:
+                print('Canceled')
+        else:
+            git_push = ['git', 'push'].extends(argv[1:])
+            push_out = subprocess.check_output(git_push)
+            print(push_out)
 
+
+if __name__ == '__main__':
+    main()
