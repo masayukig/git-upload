@@ -20,8 +20,9 @@ args = sys.argv
 
 def main(argv=sys.argv):
     origin_url = subprocess.check_output(['git', 'config', '--get',
-                                          'remote.origin.url'])
-    if origin_url.decode('utf-8').startswith('https://review.openstack.org/'):
+                                          'remote.origin.url']).decode('utf-8')
+    if origin_url.startswith('https://review.openstack.org/') or \
+       origin_url.startswith('git://git.openstack.org/'):
         # Gerrit
         git_review = ['git', 'review']
         git_review.extend(argv[1:])
