@@ -44,7 +44,8 @@ def main(argv=sys.argv):
             else:
                 print('Canceled')
         else:
-            git_push = ['git', 'push'].extends(argv[1:])
+            git_push = ['git', 'push']
+            git_push.extend(argv[1:])
             subprocess.call(git_push, stdout=sys.stdout)
 
 
