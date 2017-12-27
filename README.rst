@@ -25,17 +25,19 @@ From source
 
    $ git clone https://github.com/masayukig/git-upload
    $ cd git-upload
-   $ sudo pip install -e . (or virtualenv ~/venv; source
-   ~/venv/bin/activate; pip install .)
+   $ sudo pip install -e .
+   or
+   $ virtualenv ~/venv; source ~/venv/bin/activate; pip install .
 
 From PYPI
 ---------
-(TBD but it should be like this)
 
 ::
 
-   $ pip install git-upload (or virtualenv ~/venv; source
-   ~/venv/bin/activate; pip install git-upload)
+   $ pip install git-upload
+   or
+   $ virtualenv ~/venv; source ~/venv/bin/activate; pip install
+   git-upload
 
 Usage
 =====
