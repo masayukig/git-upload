@@ -33,6 +33,7 @@ From PYPI
 (TBD but it should be like this)
 
 ::
+
    $ pip install git-upload (or virtualenv ~/venv; source
    ~/venv/bin/activate; pip install git-upload)
 
