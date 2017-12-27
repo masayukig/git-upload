@@ -1,0 +1,17 @@
+AUTHORS
+ChangeLog
+/build
+/dist
+/.stestr
+__pycache__
+*.pyc
+*~
+.*.swp
+.tox/*
+*egg*
+doc/build/
+releasenotes/build/
+.stestr.sqlite
+.coverage*
+!.coveragerc
+cover/
