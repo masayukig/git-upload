@@ -36,8 +36,7 @@ From PYPI
 
    $ pip install git-upload
    or
-   $ virtualenv ~/venv; source ~/venv/bin/activate; pip install
-   git-upload
+   $ virtualenv ~/venv; source ~/venv/bin/activate; pip install git-upload
 
 Usage
 =====
