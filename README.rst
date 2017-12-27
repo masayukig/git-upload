@@ -15,6 +15,27 @@ others, this command runs ``git push origin $CURRENT_BRANCH`` (you can
 specify the remote repo and branch, of course :).
 
 
+Installation
+============
+
+From source
+-----------
+
+::
+
+   $ git clone https://github.com/masayukig/git-upload
+   $ cd git-upload
+   $ sudo pip install -e . (or virtualenv ~/venv; source
+   ~/venv/bin/activate; pip install .)
+
+From PYPI
+---------
+(TBD but it should be like this)
+
+::
+   $ pip install git-upload (or virtualenv ~/venv; source
+   ~/venv/bin/activate; pip install git-upload)
+
 Usage
 =====
 

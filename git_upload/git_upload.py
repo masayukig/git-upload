@@ -11,17 +11,15 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
+from builtins import input
 from os import path
 import subprocess
 import sys
-from builtins import input
 
 args = sys.argv
 
 
 def main(argv=sys.argv):
-    origin_url = subprocess.check_output(['git', 'config', '--get',
-                                          'remote.origin.url']).decode('utf-8')
     if path.isfile('.gitreview'):
         # Gerrit
         git_review = ['git', 'review']
