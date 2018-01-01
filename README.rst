@@ -2,6 +2,13 @@
 git-upload
 ==========
 
+.. image:: https://circleci.com/gh/masayukig/git-upload.svg?style=shield
+    :target: https://circleci.com/gh/masayukig/git-upload
+
+.. image:: https://img.shields.io/pypi/v/git-upload.svg
+    :target: https://pypi.python.org/pypi/git-upload
+
+
 I don't want to care about the type of repositories when pushing a
 patch.
 
