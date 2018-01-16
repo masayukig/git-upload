@@ -35,6 +35,8 @@ From source
    $ cd git-upload
    $ sudo pip install -e .
    or
+   $ pip install --user -e .
+   or
    $ virtualenv ~/venv; source ~/venv/bin/activate; pip install .
 
 From PYPI
@@ -43,6 +45,8 @@ From PYPI
 ::
 
    $ pip install git-upload
+   or
+   $ pip install --user git-upload
    or
    $ virtualenv ~/venv; source ~/venv/bin/activate; pip install git-upload
 
