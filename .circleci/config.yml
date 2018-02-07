@@ -51,6 +51,6 @@ jobs:
             . .venv/bin/activate
             stestr run
 
-      - store_test_artifacts:
+      - store_test_results:
           path: .stestr
           destination: stestr
