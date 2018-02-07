@@ -52,5 +52,5 @@ jobs:
             stestr run
 
       - store_artifacts:
-          path: test-reports
-          destination: test-reports
+          path: .stestr
+          destination: .stestr
