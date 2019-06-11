@@ -56,4 +56,4 @@ Usage
 ::
 
    $ git upload [<remote-repo>] [<branch>]
-   or you can use varioush options for `git push` or `git review`.
+or you can use various options for `git push` or `git review`.
